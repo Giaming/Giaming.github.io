@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2020/10 | Hexo</title>
+  <title>Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+  <meta name="description" content="Minkowski距离Minkowski距离是基于$L_p$范数定义的，即$$L_p (A,B) &#x3D; \left|            \sum_{i&#x3D;1}^n |a_i - b_i|^p            \right|^\frac{1}{p}$$如果p&#x3D;1,那么$L_1(A,B)$称为街区距离，表达如下：$$L_1(A,B) &#x3D; \sum_{i&#x3D;1}^n |a_i-b_i|$$如果p&#x3D;2">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2020/10/index.html">
+<meta property="og:url" content="http://example.com/2020/10/16/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%BA%A6%E9%87%8F%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Minkowski距离Minkowski距离是基于$L_p$范数定义的，即$$L_p (A,B) &#x3D; \left|            \sum_{i&#x3D;1}^n |a_i - b_i|^p            \right|^\frac{1}{p}$$如果p&#x3D;1,那么$L_1(A,B)$称为街区距离，表达如下：$$L_1(A,B) &#x3D; \sum_{i&#x3D;1}^n |a_i-b_i|$$如果p&#x3D;2">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-10-16T07:55:53.097Z">
+<meta property="article:modified_time" content="2020-10-10T10:20:11.453Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -150,70 +154,165 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-常用的相似性度量算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Minkowski距离"><a href="#Minkowski距离" class="headerlink" title="Minkowski距离"></a>Minkowski距离</h3><p>Minkowski距离是基于$L_p$范数定义的，即<br>$$<br>L_p (A,B) = \left|<br>            \sum_{i=1}^n |a_i - b_i|^p<br>            \right|^\frac{1}{p}<br>$$<br>如果p=1,那么$L_1(A,B)$称为街区距离，表达如下：<br>$$<br>L_1(A,B) = \sum_{i=1}^n |a_i-b_i|<br>$$<br>如果p=2,那么$L_2(A,B)$称为欧氏距离，即<br>$$<br>L_2(A,B) = \left(<br>            \sum_{i=1}^n|a_i-b_i|^2<br>            \right)^\frac{1}{2}<br>$$<br>如果$p=\infty$,$L_\infty(A,B)$称之为切比雪夫距离：<br>$$<br>L_\infty (A,B) = max\left(  \sum_{i=1}^n |a_i-b_i| \right)<br>$$</p>
+<h3 id="直方图相交法"><a href="#直方图相交法" class="headerlink" title="直方图相交法"></a>直方图相交法</h3><p>直方图相交法具有==快速、简单==的特点，还有个优点就是它能够有效地抑制背景产生的干扰，直方图相交法的数学表达如下：<br>$$<br>d(A,B) = 1-\sum_{i=1}^n min(a_i,b_i)<br>$$<br>进一步做归一化处理得：<br>$$<br>d(A,B) = 1 - \frac{\sum_{i=1}^n min(a_i,b_i)}{min(\sum_{i=1}^n a_i, \sum_{i=1}^n b_i)}<br>$$</p>
+<h3 id="二次式距离"><a href="#二次式距离" class="headerlink" title="二次式距离"></a>二次式距离</h3><p>二次式（quadratic distance)距离被用作基于颜色的直方图的图像进行检索，通过实验证明是行之有效的，这是因为二次式距离将不同颜色之间拥有的相似度纳入考虑范围之内。二次式距离表达如下：<br>$$<br>d_qad(A,B) = (A-B)^T M(A-B)<br>$$<br>式中，$M=[m_{ij}]$,$m_{ij}$表示在直方图中下标为$i$和$j$的两种不同颜色间相似度。</p>
+<h3 id="余弦距离"><a href="#余弦距离" class="headerlink" title="余弦距离"></a>余弦距离</h3><p>余弦距离计算是不同的两向量间方向上的差异，他的数学描述：<br>$$<br>A\cdot B = A^T B = |A||B|cos\theta<br>$$</p>
+<p>$$<br>d_{cos}(A,B)  = 1 - cos\theta = 1 - \frac{A^T B}{|A|\cdot|B|}<br>$$</p>
+<p>式中，$|A| = (A^TA)^\frac{1}{2}, |B| = (B^TB)^\frac{1}{2}$</p>
+<h3 id="相关系数"><a href="#相关系数" class="headerlink" title="相关系数"></a>相关系数</h3><p>相关系数是表示两个向量之间线性关系紧密程度的量，数学定义如下：<br>$$<br>\rho(A,B) = \frac{\sum_{i=1}^n(a_i - \bar a)(b_i - \bar b)}{\sqrt{\sum_{i=1}^n(a_i - \bar a)^2 \sum_{i=1}^n}(b_i - \bar b)^2}<br>$$<br>两不同向量之间的距离为：<br>$$<br>d_\rho = 1 - \rho(A,B)<br>$$<br>式中，$\bar a = \frac{1}{n} \sum_{i=1}^n a_i, \bar b = \frac{1}{n} \sum_{i=1}^n b_i$</p>
+<h3 id="Kullback-Leibler散度和Jeffrey散度"><a href="#Kullback-Leibler散度和Jeffrey散度" class="headerlink" title="Kullback-Leibler散度和Jeffrey散度"></a>Kullback-Leibler散度和Jeffrey散度</h3><p>Kullback-Leibler和Jeffrey（K-L）散度数学描述如下：<br>$$<br>d_{kl}(A,B) = \sum_{i=1}^n a_i log\frac{a_i}{b_i}<br>$$<br>式中，$a_i \geq 0$, $b_i \geq 0$ ,且$\sum_{i=1}^{n} a_i = 1$, $\sum_{i=1}^n b_i = 1$。K-L散度的弊端是非对称并且对直方图柱值数非常敏感，然而改进后的Jeffrey散度具有对称性且对噪声及直方图柱值数不敏感，他的定义如下：<br>$$<br>d_{ref}(A,B) = \sum_{i=1}^n \left[  a_ilog\frac{a_i}{m_i}+b_ilog\frac{b_i}{m_i} \right]<br>$$<br> 式中，$m_i = \frac{a_i+b_i}{2}$</p>
+<h3 id="chi-2-距离"><a href="#chi-2-距离" class="headerlink" title="$\chi^2$距离"></a>$\chi^2$距离</h3><p>$\chi^2$距离的定义如下：<br>$$<br>d_{\chi^2}(A,B)  = \sum_{i=1}^n \frac{(a_i - m_i)^2}{m_i}<br>$$<br> 式中，$m_i = \frac{a_i+b_i}{2}$</p>
+<h3 id="EMD-Earth-Mover’s-Distance"><a href="#EMD-Earth-Mover’s-Distance" class="headerlink" title="EMD(Earth Mover’s Distance)"></a>EMD(Earth Mover’s Distance)</h3><p>EMD指的是空间S中分布着m堆土$p_i, i=1,…,m$,每堆土的质量为$w_{p_i}$,同时分布有n个土坑，土坑的大小为$q_j, j=1,…,n$,每个土坑可以装土的质量为$w_{q_j}$,即$p=\Bigg{ (p_1,w_{p_1}),…,(p_m, w_{p_m})\Bigg},q=\Bigg{ (q_1,w_{q_1}),…,(q_m, w_{q_m})\Bigg} $。把所有的土填到这些坑中，一共做的功可以表示为：<br>$$<br>work(p,q,f) = \sum_{i=1}^m\sum_{j=1}^nd(p_i,q_j)f_{ij}<br>$$</p>
+<p>式中，$d(p_i,q_j)$第i堆从土到第j个坑之间的距离，为了将图像距离测度与该距离区别开，称该距离为基本距离。$f_{ij}$表示为将第i堆土运到第j个坑土的质量。$d(p_i,q_j)f_{ij}$表示把第i堆土中质量为$f_{ij}$的土运到第j个坑土的质量。$d(p_i,q_j)f_{ij}$表示把第i堆土中质量为$f_{ij}$的土运到第j个坑过程中所做的功。</p>
+<p>约束条件：<br>$$<br>\begin{align}<br>① f_{ij}\geq0,1\leq{i}\leq{m},q\leq{j}\leq{n} \<br>② \sum_{j=1}^nf_{ij}\leq{w_{p_i}},1\leq{i}\leq{m}\<br>③ \sum_{j=1}^nf_{ij}\leq{w_{q_i}},1\leq{j}\leq{n}\<br>④ \sum_{i=1}^m\sum_{j=1}^nf_{ij} = min(\sum_{i=1}^mw_{p_i},\sum_{j=1}^nw_{q_j})<br>\end{align}<br>$$</p>
+<p>条件①说明，当每次所运土质量大于零时才开始做工；</p>
+<p>条件②说明，从第i堆土运到各个坑土的质量一定不会大于该土的质量；</p>
+<p>条件③说明，第j个坑能够接受的土的质量，一定不会大于该坑接受的土的最大质量，</p>
+<p>条件④说明，从各堆土运到第j各堆土的质量，一定不会大于该土堆的质量。因此，EMD定义如下：<br>$$<br>EMD(p,q) = \frac{\sum_{i=1}^m\sum_{j=1}^nd(p_i,q_j)f_{ij}}{\sum_{i=1}^m\sum_{j=1}^nf_{ij}}<br>$$</p>
+<h3 id="编辑距离（Edit-Distance）"><a href="#编辑距离（Edit-Distance）" class="headerlink" title="编辑距离（Edit Distance）"></a>编辑距离（Edit Distance）</h3><p>编辑距离又称为Levenshtein距离，被定义为从一个串换到另一个串的最少插入、删除、替换操作。编辑距离被广泛应用在结构模式识别中。</p>
+<p> 设A表示有限的字符集和，$\epsilon$表示一个空符号。编辑操作可以表示为$a\rightarrow{b}$,$a\rightarrow{\epsilon}$,$\epsilon\rightarrow{a}$,其中$a,b\in{A},a\rightarrow{B}$代表替换操作，$a\rightarrow{\epsilon}$代表删除操作，$\epsilon\rightarrow{a}$代表插入操作。设$c(a\rightarrow{b}),c(a\rightarrow{\epsilon}),c(\epsilon\rightarrow{a})$分别表示各类操作的代价，设符号$x=x_1,x_2,…,x_n, y=y_1,y_2,…,y_m$,则它们的编辑距离的计算可分为四个步骤：</p>
+<p><strong>step 1</strong>    $D(0,0) = 0$</p>
+<p><strong>step 2</strong>     $For j = 1,…,m$</p>
+<p>​                                        $D(0,j) = D(0,j-1)+c(\epsilon\rightarrow{y_i})$</p>
+<p><strong>step 3</strong>     $For j=1,…,n$</p>
+<p>​                            $For j=1,…,m$<br>$$<br>D(i,j) =min       \Bigg{<br>                    \begin{array}{c}<br>                    D(i-1,j-1)+c(x_i\rightarrow{y_j})\<br>                       D(i-1,j)+c(x_i\rightarrow{\epsilon})\<br>                       D(i,j-1)+c(\epsilon\rightarrow{y_j})<br>                       \end{array}<br>                       \Bigg}<br>$$<br>从以上的计算步骤可以得出，串$x$和$y$间的编辑距离$d(x,y) = D(n,m)$。</p>
+<h3 id="Hausdorff距离"><a href="#Hausdorff距离" class="headerlink" title="Hausdorff距离"></a>Hausdorff距离</h3><p>​    Hausdorff距离是指定义在两个点集上的最大-最小(max-min)距离，该距离主要用于测量两个点集之间的匹配程度，常常被应用于二值图像或轮廓的匹配技术之中。给定两个有限点集$P=(p_1,p_2,…,p_m)$,$Q=(q_1,q_2,…,q_n)$,则P和Q之间的Hausdorff距离定义为：<br>$$<br>D(P,Q) = max\Bigg{  d(P,Q),d(Q,P) \Bigg}<br>$$<br>式中$d(P,Q)$为点集P到点集Q的有向Hausdorff距离，d(Q,P)可作类推。<br>$$<br>d(P,Q) = \max \limits_{p\in{P}} \min \limits_{q\in{Q}}||p-q||\<br>d(Q,P) = \max \limits_{q\in{Q}} \min \limits_{p\in{P}}||q-p||<br>$$<br>上式的$||\cdot||$表示定义在集合上的一种距离范数。</p>
+<p>​    </p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%BA%A6%E9%87%8F%E7%AE%97%E6%B3%95/" class="archive-article-date">
-  	<time datetime="2020-10-16T07:55:53.097Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
-        </div>
-    	 
-        <div class="article-info info-on-right">
-          
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2020/10/16/%E5%B8%B8%E7%94%A8%E7%9A%84%E7%9B%B8%E4%BC%BC%E6%80%A7%E5%BA%A6%E9%87%8F%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/10/16/hello-world/" class="archive-article-date">
-  	<time datetime="2020-10-16T07:30:38.565Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-10-16</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2020/10/16/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/10/16/hello-world/">Hello World</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
+
+  
 
 
           </div>
@@ -236,8 +335,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
